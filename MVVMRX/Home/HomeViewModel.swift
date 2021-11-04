@@ -15,7 +15,10 @@ class HomeViewModel {
     // MARK: - Variables
     
     var branchesList = ["1","2","3"]
-    var loadingBehavior = BehaviorRelay<Bool>(value: false)
+    private var loadingBehavior = BehaviorRelay<Bool>(value: false)
+    var loadingObservable: Observable<Bool> {
+        return loadingBehavior.asObservable()
+    }
     
     private var isTableHiddenBehavior = BehaviorRelay<Bool>(value: false)
     var isTableHiddenObservable: Observable<Bool> {

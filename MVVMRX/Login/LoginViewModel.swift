@@ -15,7 +15,11 @@ class LoginViewModel {
     
     var phoneNumberBehavior = BehaviorRelay<String>(value: "")
     var passwordBehavior = BehaviorRelay<String>(value: "")
-    var loadingBehavior = BehaviorRelay<Bool>(value: false)
+    
+    private var loadingBehavior = BehaviorRelay<Bool>(value: false)
+    var loadingObservable: Observable<Bool> {
+        return loadingBehavior.asObservable()
+    }
     
     var isPhoneValid: Observable<Bool> {
         return phoneNumberBehavior.asObservable().map { (phone) -> Bool in

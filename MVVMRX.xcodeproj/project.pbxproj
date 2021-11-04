@@ -22,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		0F6F8F6E37EAB2737A7256A8 /* Pods_MVVMRX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMRX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		104ACF382733F90C002F755C /* layground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = layground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		105784E927326E0500841A42 /* MVVMRX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMRX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		105784EC27326E0500841A42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		105784F027326E0500841A42 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		105784EB27326E0500841A42 /* MVVMRX */ = {
 			isa = PBXGroup;
 			children = (
+				104ACF382733F90C002F755C /* layground.playground */,
 				109C67192732B87300CC6228 /* Home */,
 				109C67182732B86500CC6228 /* Login */,
 				105784EC27326E0500841A42 /* AppDelegate.swift */,

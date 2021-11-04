@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
     
     
     func subscribeToLoading() {
-        loginViewModel.loadingBehavior.subscribe (onNext: {(isLoading) in
+        loginViewModel.loadingObservable.subscribe (onNext: {(isLoading) in
             if isLoading {
                 print("Loading")
             }else {

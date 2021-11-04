@@ -14,7 +14,11 @@ class HomeViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet weak var emptyView: UIView!
-    @IBOutlet weak var branchesTableView: UITableView!
+    @IBOutlet weak var branchesTableView: UITableView! {
+        didSet {
+            branchesTableView.register(UINib(nibName: branchTableViewCell, bundle: nil), forCellReuseIdentifier: branchTableViewCell)
+        }
+    }
     
     // MARK: - Variables
     
@@ -24,21 +28,22 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+//        setupTableView()
         subscribeToLoading()
         subscribeToResponse()
         getData()
         bindToHiddenTable()
         subscribeToBranchSelection()
+        
     }
     
     // MARK: - Functions
 
-    func setupTableView() {
-        branchesTableView.register(UINib(nibName: branchTableViewCell, bundle: nil), forCellReuseIdentifier: branchTableViewCell)
-    }
+//    func setupTableView() {
+//        branchesTableView.register(UINib(nibName: branchTableViewCell, bundle: nil), forCellReuseIdentifier: branchTableViewCell)
+//    }
     func subscribeToLoading() {
-        homeViewModel.loadingBehavior.subscribe (onNext: { (isLoading) in
+        homeViewModel.loadingObservable.subscribe (onNext: { (isLoading) in
             if isLoading {
                 print("Loading...")
             }else {
@@ -56,9 +61,12 @@ class HomeViewController: UIViewController {
         homeViewModel.isTableHiddenObservable.bind(to: branchesTableView.rx.isHidden).disposed(by: disposeBag)
     }
     func subscribeToBranchSelection() {
-        Observable.zip(branchesTableView.rx.itemSelected, branchesTableView.rx.modelSelected(String.self)).bind{ index,branch in
+        branchesTableView.rx.modelSelected(String.self).bind { branch in
             print("\(branch) Selected")
         }.disposed(by: disposeBag)
+//        Observable.zip(branchesTableView.rx.itemSelected, branchesTableView.rx.modelSelected(String.self)).bind { index,branch in
+//            print("\(branch) Selected")
+//        }.disposed(by: disposeBag)
     }
     func getData() {
         homeViewModel.getData()
