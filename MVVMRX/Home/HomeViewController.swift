@@ -27,10 +27,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         subscribeToLoading()
-//        subscribeToResponse()
-        bindSearch()
-//        getData()
-        
+        bindSearch()        
         bindToHiddenTable()
         bindToHiddenEmptyView()
         subscribeToBranchSelection()
