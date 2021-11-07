@@ -78,44 +78,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hyl-hh-Hlw">
-                                <rect key="frame" x="12" y="303" width="390" height="300"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Branches Yet..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbI-bd-ZRc">
-                                        <rect key="frame" x="125" y="139.5" width="140.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="hbI-bd-ZRc" firstAttribute="centerX" secondItem="Hyl-hh-Hlw" secondAttribute="centerX" id="9cg-3q-bw7"/>
-                                    <constraint firstAttribute="height" constant="300" id="LVc-fD-8aP"/>
-                                    <constraint firstItem="hbI-bd-ZRc" firstAttribute="centerY" secondItem="Hyl-hh-Hlw" secondAttribute="centerY" id="bRT-kW-IFr"/>
-                                    <constraint firstItem="hbI-bd-ZRc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hyl-hh-Hlw" secondAttribute="leading" constant="12" id="tUs-GZ-HWW"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x6H-nG-Az4">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="cho-KL-IbX">
                                 <rect key="frame" x="12" y="56" width="390" height="794"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hJC-IF-h6n">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="nbW-Ic-8dS"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hyl-hh-Hlw">
+                                        <rect key="frame" x="0.0" y="52" width="390" height="742"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Branches Yet..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbI-bd-ZRc">
+                                                <rect key="frame" x="125" y="361" width="140.5" height="20.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x6H-nG-Az4">
+                                        <rect key="frame" x="0.0" y="794" width="390" height="0.0"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TMH-hV-ERU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Hyl-hh-Hlw" firstAttribute="leading" secondItem="TMH-hV-ERU" secondAttribute="leading" constant="12" id="Gvv-rN-h9e"/>
-                            <constraint firstItem="Hyl-hh-Hlw" firstAttribute="centerX" secondItem="TMH-hV-ERU" secondAttribute="centerX" id="WS8-Dg-8D8"/>
-                            <constraint firstItem="x6H-nG-Az4" firstAttribute="top" secondItem="TMH-hV-ERU" secondAttribute="top" constant="12" id="bLs-se-iRm"/>
-                            <constraint firstItem="TMH-hV-ERU" firstAttribute="bottom" secondItem="x6H-nG-Az4" secondAttribute="bottom" constant="12" id="cfZ-eJ-6PK"/>
-                            <constraint firstItem="x6H-nG-Az4" firstAttribute="leading" secondItem="TMH-hV-ERU" secondAttribute="leading" constant="12" id="klS-el-rYO"/>
-                            <constraint firstItem="Hyl-hh-Hlw" firstAttribute="centerY" secondItem="TMH-hV-ERU" secondAttribute="centerY" id="lXa-8O-quH"/>
-                            <constraint firstItem="TMH-hV-ERU" firstAttribute="trailing" secondItem="x6H-nG-Az4" secondAttribute="trailing" constant="12" id="nuD-Ya-tnt"/>
+                            <constraint firstItem="cho-KL-IbX" firstAttribute="top" secondItem="TMH-hV-ERU" secondAttribute="top" constant="12" id="Con-pa-3P7"/>
+                            <constraint firstItem="TMH-hV-ERU" firstAttribute="trailing" secondItem="cho-KL-IbX" secondAttribute="trailing" constant="12" id="Pmy-hL-7cX"/>
+                            <constraint firstItem="TMH-hV-ERU" firstAttribute="bottom" secondItem="cho-KL-IbX" secondAttribute="bottom" constant="12" id="XBh-tX-ReM"/>
+                            <constraint firstItem="cho-KL-IbX" firstAttribute="leading" secondItem="TMH-hV-ERU" secondAttribute="leading" constant="12" id="iZf-G0-gbb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="branchesTableView" destination="x6H-nG-Az4" id="Rrn-bs-H6f"/>
                         <outlet property="emptyView" destination="Hyl-hh-Hlw" id="Syj-gM-PlX"/>
+                        <outlet property="searchBar" destination="hJC-IF-h6n" id="hhS-3j-hab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vb4-q6-43D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

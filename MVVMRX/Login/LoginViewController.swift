@@ -26,6 +26,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        observePhoneTF()
+        phoneNumberTF.text = loginViewModel.phoneNumberBehavior.value
+        passwordTF.text = loginViewModel.passwordBehavior.value
         bindTextFieldsToViewModel()
         subscribeToLoading()
         subscribeToResponseModel()

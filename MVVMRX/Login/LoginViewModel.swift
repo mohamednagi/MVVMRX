@@ -13,8 +13,8 @@ class LoginViewModel {
     
     // MARK: - Variables
     
-    var phoneNumberBehavior = BehaviorRelay<String>(value: "")
-    var passwordBehavior = BehaviorRelay<String>(value: "")
+    var phoneNumberBehavior = BehaviorRelay<String>(value: "y")
+    var passwordBehavior = BehaviorRelay<String>(value: "y")
     
     private var loadingBehavior = BehaviorRelay<Bool>(value: false)
     var loadingObservable: Observable<Bool> {

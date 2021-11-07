@@ -14,10 +14,17 @@ class HomeViewModel {
     
     // MARK: - Variables
     
-    var branchesList = ["1","2","3"]
+    let disposeBag = DisposeBag()
+    
+    var homeArray = BehaviorRelay.init(value: ["moe","nagi","ali"])
     private var loadingBehavior = BehaviorRelay<Bool>(value: false)
     var loadingObservable: Observable<Bool> {
         return loadingBehavior.asObservable()
+    }
+    
+    private var isEmptyViewHiddenBehavior = BehaviorRelay<Bool>(value: false)
+    var isEmptyViewHiddenObservable: Observable<Bool> {
+        return isEmptyViewHiddenBehavior.asObservable()
     }
     
     private var isTableHiddenBehavior = BehaviorRelay<Bool>(value: false)
@@ -34,13 +41,31 @@ class HomeViewModel {
     
     func getData() {
         loadingBehavior.accept(true)
-        modelSubject.onNext(branchesList)
-        if branchesList.count > 0 {
-            isTableHiddenBehavior.accept(false)
-        }else {
-            isTableHiddenBehavior.accept(true)
-        }
+        modelSubject.subscribe {[weak self] (shownArray) in
+            guard let self = self else {return}
+            if let array = shownArray.element {
+                if array.count > 0 {
+                    self.showTable()
+                }else {
+                    self.hideTable()
+                }
+            }else {
+                self.hideTable()
+            }
+        }.disposed(by: disposeBag)
+
+        modelSubject.onNext(homeArray.value)
         loadingBehavior.accept(false)
         
+    }
+    
+    func showTable() {
+        self.isTableHiddenBehavior.accept(false)
+        self.isEmptyViewHiddenBehavior.accept(true)
+    }
+    
+    func hideTable() {
+        self.isTableHiddenBehavior.accept(true)
+        self.isEmptyViewHiddenBehavior.accept(false)
     }
 }

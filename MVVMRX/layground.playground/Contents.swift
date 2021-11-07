@@ -68,3 +68,8 @@ bRelay.subscribe { (string) in
     print(string.element ?? "")
 }.disposed(by: bag)
 bRelay.accept("bRelay")
+
+
+
+let behavRelay = BehaviorRelay.init(value: [""])
+
