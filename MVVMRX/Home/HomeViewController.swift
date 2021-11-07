@@ -63,7 +63,6 @@ class HomeViewController: UIViewController {
     }
     
     func bindSearch() {
-        var shownResults = [String]()
         let shownResultsSubject = PublishSubject<[String]>()
         var shownResultsObservable: Observable<[String]> {
             return shownResultsSubject.asObserver()
@@ -83,13 +82,12 @@ class HomeViewController: UIViewController {
             .distinctUntilChanged()
             .subscribe ( onNext: {[weak self] (searchText) in
                 guard let self = self else {return}
-                shownResultsSubject.onNext(self.homeViewModel.homeArray.value.filter({ result in
-                    searchText.isEmpty || result.lowercased().contains(searchText.lowercased())
-                }))
-                shownResults = self.homeViewModel.homeArray.value.filter({ result in
+                let resultsArray = self.homeViewModel.homeArray.value.filter({ result in
                     searchText.isEmpty || result.lowercased().contains(searchText.lowercased())
                 })
-                print("shownResults = ",shownResults)
+                shownResultsSubject.onNext(resultsArray)
+                resultsArray.count > 0 ? self.homeViewModel.showTable() : self.homeViewModel.hideTable()
+                
             }).disposed(by: disposeBag)
     }
     
